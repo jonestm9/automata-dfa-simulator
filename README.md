@@ -1,5 +1,4 @@
 # Deterministic Finite Automata (DFA) Simulator 
-## written in Python
 
 To run, make sure you have Python installed.
 
