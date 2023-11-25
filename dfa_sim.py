@@ -6,8 +6,6 @@ def process_dfa_inputs():
     alphabet_str = input("\nEnter the alphabet of the DFA, separated by commas: ").replace(" ", "")
     alphabet = set(alphabet_str.split(","))
 
-    print(alphabet)
-
     states_str = input("\nEnter the states of the DFA, separated by commas: ").replace(" ", "")
     states = set(states_str.split(","))
 
@@ -31,7 +29,6 @@ def process_dfa_inputs():
         transition[0] = tuple(transition[0].split(','))
         if len(transition) != 2:
             raise Exception("\nError: invalid transition format.")
-        # if specified state doesn't exist or specified char not in alphabet, fails
         if transition[0][0] not in states or transition[0][1] not in alphabet or transition[1] not in states:
             raise Exception("\nError: invalid transition.")
         if transition[0] in transitions:
@@ -62,7 +59,6 @@ if __name__ == "__main__":
 
     while True:
         user_input = input("\nEnter a string for your specified DFA to recognize: ").replace(" ", "")
-        print(user_input, alphabet, start_state, accepting_states, transitions)
         res = recognize_string(user_input, alphabet, start_state, accepting_states, transitions)
         if res:
             print("\nSuccess - string accepted by your DFA!")
