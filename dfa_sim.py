@@ -14,6 +14,9 @@ def process_dfa_inputs():
 
     accepting_states_str = input("\nEnter the accepting states of the DFA, separated by commas: ").replace(" ", "")
     accepting_states = set(accepting_states_str.split(","))
+    for state in accepting_states:
+        if state not in states:
+            raise Exception("\nError: accepting state {} not in state set.".format(state))
 
     transitions = {}
     while True:
