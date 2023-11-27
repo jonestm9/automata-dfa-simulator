@@ -1,5 +1,3 @@
-from collections import defaultdict
-
 def process_dfa_inputs():
     print("Welcome to the DFA Simulator! Input the information about your DFA below.")
 

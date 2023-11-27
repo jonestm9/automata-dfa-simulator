@@ -25,13 +25,14 @@ def test_recognition():
         # Test case 6: DFA with an invalid character
         ["0231", {"0", "1"}, 'q0', {'q1'}, {('q0', '1'): 'q1', ('q0', '0'): 'q1'}, False],
 
-        
     ]
     pass_all = True
+    ctr = 0
     for test_input in test_inputs:
+        ctr += 1
         res = recognize_string(test_input[0], test_input[1], test_input[2], test_input[3], test_input[4])
         if res != test_input[5]:
-            print("Test failed for input: {}".format(test_input))
+            print("Test failed for test number {}.".format(ctr))
             pass_all = False
             
     return pass_all
