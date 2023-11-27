@@ -14,7 +14,7 @@ def test_recognition():
         # Test cases 1-3: Testing different strings on a simple DFA that only accepts strings with 0 or 1 of length 1
         ["0", {"0","1"}, 'q0', {'q1'}, {('q0', '1'): 'q1', ('q0', '0'): 'q1'}, True],
         ["1", {"0","1"}, 'q0', {'q1'}, {('q0', '1'): 'q1', ('q0', '0'): 'q1'}, True],
-        ["01", {"0","1"}, 'q0', {'q1'}, {('q0', '1'): 'q1', ('q0', '0'): 'q1'}, False],
+        ["012", {"0","1"}, 'q0', {'q1'}, {('q0', '1'): 'q1', ('q0', '0'): 'q1'}, False],
         
         # Test case 4: Testing different DFA 
         ["010101", {"0", "1"}, 'q0', {'q2'}, {('q0', '1'): 'q1', ('q0', '0'): 'q2', ('q1', '1'): 'q1', ('q1', '0'): 'q2', ('q2', '1'): 'q2', ('q2', '0'): 'q2'}, True],
