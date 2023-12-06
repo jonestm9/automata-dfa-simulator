@@ -31,7 +31,7 @@ def process_dfa_inputs():
         if len(transition) != 2:
             raise Exception("\nError: invalid transition format.")
         if transition[0][0] not in states or transition[0][1] not in alphabet or transition[1] not in states:
-            raise Exception("\nError: invalid transition.")
+            raise Exception("\nError: invalid transition - a state or input was not found in given alphabet or states.")
         if transition[0] in transitions:
             raise Exception("\nError: nondeterminism. This input/state pair already has a transition.")
         
@@ -44,10 +44,10 @@ def recognize_string(input_str, alphabet, start_state, accepting_states, transit
     curr_state = start_state
     for char in input_str:
         if char not in alphabet:
-            print("\nError: invalid character in string.")
+            print("\nError: no character found in provided alphabet.")
             return False
         if tuple([curr_state, char]) not in transitions:
-            print("\nError: no transition for state {} and input {}.".format(curr_state, char))
+            print("\nError: no transition from state {} with input {}.".format(curr_state, char))
             return False
         curr_state = transitions[tuple([curr_state, char])]
     if curr_state and curr_state in accepting_states:
@@ -59,13 +59,13 @@ if __name__ == "__main__":
     alphabet, states, start_state, accepting_states, transitions = process_dfa_inputs()
 
     while True:
-        user_input = input("\nEnter a string for your specified DFA to recognize: ").replace(" ", "")
+        user_input = input("\nEnter a string for your specified DFA to recognize, or type 'done' to finish: ").replace(" ", "")
+        if user_input == "done":
+            break
         res = recognize_string(user_input, alphabet, start_state, accepting_states, transitions)
         if res:
             print("\nSuccess - string accepted by your DFA!")
         else:
             print("\nFailure - string not in the language recognized by your DFA.")
         
-        cont = input("\nWould you like to recognize another string? (y/n): ")
-        if cont.lower() != "y":
-            break
+        
